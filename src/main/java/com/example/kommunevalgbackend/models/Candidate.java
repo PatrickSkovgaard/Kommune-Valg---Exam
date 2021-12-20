@@ -1,11 +1,13 @@
 package com.example.kommunevalgbackend.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="candidate")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Candidate {
 
     @Id
@@ -15,18 +17,16 @@ public class Candidate {
     @Column
     private String name;
 
-    @ManyToOne(optional = true)
-    @JoinColumn (name= "candidates")
-    @JsonBackReference
-    private Party party;
+    @Column()
+    private String partyName;
 
     @Column
     private int votes;
 
 
-    public Candidate(String name, Party party){
+    public Candidate(String name, String partyName){
         this.name = name;
-        this.party = party;
+        this.partyName = partyName;
     }
 
     public Candidate(String name){
@@ -50,12 +50,12 @@ public class Candidate {
         this.name = name;
     }
 
-    public Party getParty(){
-        return party;
+    public String getParty(){
+        return partyName;
     }
 
-    public void setParty(Party party) {
-        this.party = party;
+    public void setParty(String partyName) {
+        this.partyName = partyName;
     }
 
     public int getVotes(){

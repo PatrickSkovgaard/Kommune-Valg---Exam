@@ -1,5 +1,5 @@
 package com.example.kommunevalgbackend.models;
-
+/*
 import javax.persistence.*;
 import java.util.List;
 
@@ -45,4 +45,4 @@ public class Votebox {
             return votes.size();
         }
     }
-}
+}*/

@@ -1,5 +1,5 @@
 package com.example.kommunevalgbackend.models;
-
+/*
 import javax.persistence.*;
 import java.util.List;
 
@@ -48,3 +48,4 @@ public class Voter {
         this.vote = vote;
     }
 }
+*/

@@ -1,5 +1,6 @@
 package com.example.kommunevalgbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name="party")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Party {
 
     @Id
@@ -16,17 +18,22 @@ public class Party {
     @Column
     private String partyName;
 
-    @Column
+    @Column(nullable = true)
     private int votes;
 
-    @OneToMany
+    @OneToMany(mappedBy = "partyName")
     @JsonManagedReference
     private List<Candidate> candidates;
 
 
-    public Party(String partyName, List<Candidate> candidates){
+    /*public Party(String partyName, List<Candidate> candidates){
         this.partyName = partyName;
         this.candidates = candidates;
+    }
+*/
+
+    public Party(String partyName){
+        this.partyName = partyName;
     }
 
     public Party(){
@@ -67,4 +74,7 @@ public class Party {
         votes += number;
     }
 
+    public void addCandidateToParty(Candidate candidate){
+        candidates.add(candidate);
+    }
 }

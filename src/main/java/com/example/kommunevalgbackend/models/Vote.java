@@ -16,18 +16,21 @@ public class Vote {
     @Column
     private String vote;
 
+    @Column
+    private int totalVotes;
+
 
 
     public Vote(String voteType, String vote){
         this.voteType = voteType;
         this.vote = vote;
 
-
+        totalVotes++;
     }
 
 
     public Vote(){
-
+        totalVotes++;
     }
 
 
@@ -49,5 +52,10 @@ public class Vote {
 
     public void setVote(String vote){
         this.vote = vote;
+    }
+
+
+    public int getVoteCount(){
+        return totalVotes;
     }
 }
