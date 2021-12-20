@@ -1,6 +1,7 @@
 package com.example.kommunevalgbackend.controllers;
 
 import com.example.kommunevalgbackend.models.Candidate;
+import com.example.kommunevalgbackend.models.Party;
 import com.example.kommunevalgbackend.repositories.CandidateRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,21 +46,22 @@ public class CandidateController {
         }
     }
 
-    @PostMapping("/add_candidate")
-    public ResponseEntity<Candidate> addCandidate(){
-
-        Candidate candidate = new Candidate();
+    @PostMapping("/add_candidate/{name}")
+    public ResponseEntity<Candidate> addCandidate(@PathVariable(name = "name") String name){
+        Candidate candidate = new Candidate(name);
         candidateRepository.save(candidate);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(candidate);
     }
 
-    @PutMapping("/edit_candidate/{id}")
-    public ResponseEntity<Candidate> editCandidate(@PathVariable(name = "id") Long id){
+    @PutMapping("/edit_candidate/{id}/{new_name}")
+    public ResponseEntity<Candidate> editCandidate(@PathVariable(name = "id") Long id,
+                                                   @PathVariable(name= "new_name") String newName){
 
         Optional<Candidate> candidate = candidateRepository.findById(id);
 
         if(candidate.isPresent()){
+            candidate.get().setName(newName);
             candidateRepository.save(candidate.get());
             return ResponseEntity.status(HttpStatus.OK).build();
         }

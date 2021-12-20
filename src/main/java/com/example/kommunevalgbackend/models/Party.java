@@ -19,7 +19,7 @@ public class Party {
     @Column
     private int votes;
 
-    @OneToMany(mappedBy = "party")
+    @OneToMany
     @JsonManagedReference
     private List<Candidate> candidates;
 

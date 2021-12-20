@@ -15,8 +15,8 @@ public class Candidate {
     @Column
     private String name;
 
-    @ManyToOne(optional = false)
-    @JoinColumn //Nødvendig???
+    @ManyToOne(optional = true)
+    @JoinColumn (name= "candidates")
     @JsonBackReference
     private Party party;
 
@@ -27,6 +27,10 @@ public class Candidate {
     public Candidate(String name, Party party){
         this.name = name;
         this.party = party;
+    }
+
+    public Candidate(String name){
+        this.name = name;
     }
 
     public Candidate(){
