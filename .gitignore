@@ -31,3 +31,15 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/resources/csv/alle_partier.csv
+/.mvn/wrapper/maven-wrapper.jar
+/.mvn/wrapper/maven-wrapper.properties
+/.mvn/wrapper/MavenWrapperDownloader.java
+/mvnw
+/mvnw.cmd
+/src/main/resources/csv/parti_A.csv
+/src/main/resources/csv/parti_C.csv
+/src/main/resources/csv/parti_F.csv
+/src/main/resources/csv/parti_O.csv
+/src/main/resources/csv/parti_OE.csv
+/src/main/resources/csv/parti_V.csv
