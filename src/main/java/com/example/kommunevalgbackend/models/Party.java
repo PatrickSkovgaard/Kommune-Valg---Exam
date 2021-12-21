@@ -15,22 +15,16 @@ public class Party {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false, length = 3)
     private String partyName;
 
-    @Column(nullable = true)
+    @Column
     private int votes;
 
     @OneToMany(mappedBy = "partyName")
     @JsonManagedReference
     private List<Candidate> candidates;
 
-
-    /*public Party(String partyName, List<Candidate> candidates){
-        this.partyName = partyName;
-        this.candidates = candidates;
-    }
-*/
 
     public Party(String partyName){
         this.partyName = partyName;

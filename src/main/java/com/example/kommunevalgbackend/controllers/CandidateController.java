@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("http://localhost:8080")
 public class CandidateController {
 
     private CandidateRepository candidateRepository;
@@ -18,7 +19,7 @@ public class CandidateController {
     }
 
 
-    //Ekstra til opgave 2
+    //Ekstra til opgave 2 X
     @GetMapping("/view_candidate/{id}")
     public ResponseEntity<Optional<Candidate>> viewOneCandidate(@PathVariable(name = "id") Long id){
 
@@ -33,7 +34,7 @@ public class CandidateController {
     }
 
 
-    //Opgave 2.b
+    //Opgave 2.b X
     @GetMapping("/view_all_candidates")
     public ResponseEntity<List<Candidate>> viewAllCandidates(){
 
@@ -48,7 +49,7 @@ public class CandidateController {
     }
 
 
-    //Opgave 2.c
+    //Opgave 2.c X
     @GetMapping("/view_candidates_by_party/{party_name}")
     public ResponseEntity<List<Candidate>> viewCandidatesByParty(@PathVariable(name = "party_name")
                                                                  String partyName){
@@ -74,7 +75,7 @@ public class CandidateController {
     }
 
 
-    //Opgave 2.a
+    //Opgave 2.a X
     @PutMapping("/add_party_to_candidate/{id}/{party_name}")
     public ResponseEntity<Candidate> addPartyToCandidate(@PathVariable(name = "id") Long id,
                                                          @PathVariable(name = "party_name")
@@ -89,7 +90,7 @@ public class CandidateController {
     }
 
 
-    //Opgave 2.a
+    //Opgave 2.a X
     @PutMapping("/edit_candidate/{id}/{new_name}")
     public ResponseEntity<Candidate> editCandidate(@PathVariable(name = "id") Long id,
                                                    @PathVariable(name= "new_name") String newName){
@@ -97,7 +98,7 @@ public class CandidateController {
         Optional<Candidate> candidate = candidateRepository.findById(id);
 
         if(candidate.isPresent()){
-            candidate.get().setName(newName);
+            candidate.get().setFullName(newName);
             candidateRepository.save(candidate.get());
             return ResponseEntity.status(HttpStatus.OK).build();
         }
@@ -107,7 +108,7 @@ public class CandidateController {
     }
 
 
-    //Opgave 2.a
+    //Opgave 2.a X
     @DeleteMapping("/delete_candidate/{id}")
     public ResponseEntity<Candidate> deleteCandidate(@PathVariable(name = "id") Long id){
 

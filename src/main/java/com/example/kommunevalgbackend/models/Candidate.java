@@ -14,23 +14,23 @@ public class Candidate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String name;
+    @Column(nullable = false)
+    private String fullName;
 
-    @Column()
+    @Column(length = 3)
     private String partyName;
 
     @Column
     private int votes;
 
 
-    public Candidate(String name, String partyName){
-        this.name = name;
+    public Candidate(String fullName, String partyName){
+        this.fullName = fullName;
         this.partyName = partyName;
     }
 
-    public Candidate(String name){
-        this.name = name;
+    public Candidate(String fullName){
+        this.fullName = fullName;
     }
 
     public Candidate(){
@@ -42,12 +42,12 @@ public class Candidate {
         return id;
     }
 
-    public String getName(){
-        return name;
+    public String getFullName(){
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String name) {
+        this.fullName = name;
     }
 
     public String getParty(){

@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface CandidateRepository extends JpaRepository<Candidate, Long> {
 
-    public List<Candidate> getCandidatesByPartyName(String partyName);
+    //Opgave 2.c
+    List<Candidate> getCandidatesByPartyName(String partyName);
 }
